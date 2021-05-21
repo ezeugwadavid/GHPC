@@ -1,55 +1,115 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../styles/githubProfileStyles.css">
-        <link rel="stylesheet" href="../font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-        <header>
-            
-              <div class="header-content-1">
-                <div class="github-logo-avatar"></div>
-                <div class="search-input">
-                  <div class="input-text">Search or jump to...</div>
-                  <div class="add-on">/</div> 
-                </div>
 
-                <div class="header-links">Pull Requests</div>
-                <div class="header-links">Issues</div>
-                <div class="header-links">Marketplace</div>
-                <div class="header-links">Explore</div>
-              </div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../styles/githubProfileStyles.css">
+  <link rel="stylesheet" href="../font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
 
-              <div class="header-content-2">
+<body>
+  <header>
 
-                <div class="notification-icon header-icons-spacer">
-                  <div class="sup"></div>
-                  <i class="fa fa-bell-o" aria-hidden="true"></i>
-                </div>
+    <div class="header-content-1">
+      <div class="github-logo-avatar"></div>
+      <div class="search-input">
+        <div class="input-text">Search or jump to...</div>
+        <div class="add-on">/</div>
+      </div>
 
-                <div class="plus header-icons-spacer">
-                  <div class="add-icon">+</div>
-                  <i class="fa icon fa-caret-down"  aria-hidden="true"></i>
-                 
-                </div>
-                <div class="plus header-icons-spacer">
-                  <div class="avatar"></div>
-                  <i class="fa fa-caret-down" aria-hidden="true"></i>
-                </div>
+      <div class="header-links">Pull Requests</div>
+      <div class="header-links">Issues</div>
+      <div class="header-links">Marketplace</div>
+      <div class="header-links">Explore</div>
+    </div>
 
-              </div>
-           
-            
+    <div class="header-content-2">
 
-        </header>
+      <div class="notification-icon header-icons-spacer">
+        <div class="sup"></div>
 
-       
-        
-        <script src="../js/githubProfile.js" async defer></script>
-    </body>
+        <i class="fa fa-bell-o" aria-hidden="true" onmouseout="notificationDescRemove()"
+          onmouseover="notificationDesc()"></i>
+
+
+      </div>
+
+
+
+
+      <div class="plus header-icons-spacer">
+        <div class="add-icon">+</div>
+        <i class="fa icon fa-caret-down" aria-hidden="true"></i>
+
+      </div>
+      <div class="plus header-icons-spacer">
+        <div class="avatar"></div>
+        <i class="fa fa-caret-down" onclick="toggleActions()" aria-hidden="true"></i>
+      </div>
+
+    </div>
+
+
+  </header>
+  <div class="pop-overs">
+    <div class="notification-message" id="notify">
+      You have unread notifications
+    </div>
+
+    <div class="profile-actions" id="actions">
+      <div class="username-container">
+        <div class="user-desc">Signed in as</div>
+        <div class="user-desc bold">ezeugwadavid</div>
+
+      </div>
+
+      <div class="border"></div>
+      <div class="status-container">
+        <div class="set-status"><i class="fa fa-smile-o" aria-hidden="true"></i> Set status</div>
+      </div>
+
+      <div class="border"></div>
+
+      <div class="actions-container">
+        <div class="text-action">Your profile</div>
+        <div class="text-action">Your repositories</div>
+        <div class="text-action">Your codespaces</div>
+        <div class="text-action">Your organisations</div>
+        <div class="text-action">Your projects</div>
+        <div class="text-action">Your stars</div>
+        <div class="text-action">Your gists</div>
+
+      </div>
+      <div class="border"></div>
+
+      <div class="actions-container">
+        <div class="text-action">Upgrade</div>
+        <div class="text-action">Feature preview</div>
+        <div class="text-action">Help</div>
+        <div class="text-action">Settings</div>
+
+
+      </div>
+
+      <div class="border"></div>
+
+      <div class="actions-container">
+        <div class="text-action">Sign out</div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+  <script src="../js/githubProfile.js" async defer></script>
+</body>
+
 </html>
