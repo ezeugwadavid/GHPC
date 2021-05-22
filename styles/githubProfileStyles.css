@@ -13,6 +13,10 @@ header{
     background-color: #24292E;
 }
 
+.mobile{
+    display: none;
+}
+
 
 .github-logo-avatar{
     border: 1px solid #24292E;
@@ -121,6 +125,7 @@ header{
     background-color: #FFFFFF;
     border-radius: 5px;
     display: none;
+    z-index: 2;
     
 }
 
@@ -266,4 +271,130 @@ padding: 12px 0px;
     background-image: url("https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     background-position: center;
     background-size: cover;
+}
+
+.header-navs{
+    display: none;
+}
+
+
+@media screen and (max-width: 768px){
+    .desktop{
+        display: none;
+    }
+
+    .mobile{
+        display: block;
+    }
+
+    .pop-overs{
+        display: none;
+    }
+
+    .header-contents{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+        padding: 0% 3%;
+        background-color: #24292E;
+
+    }
+
+    .hamburger{
+        margin: auto 0px;
+        color: #a7abaf;
+    }
+
+    .menu{
+        height: 27px;
+        width: 27px;
+    }
+
+    .header-navs{
+        padding: 2% 3%;
+        background-color: #24292E;
+    }
+
+    .search-input{
+        margin: auto 10px;
+        display: inline-block;
+        position: relative;
+      
+    }
+
+    .input-text{
+        height: 30px;
+        width: 90vw;
+        background-color: #24292E;
+        border: 1px solid #444D56;
+        color: #a7abaf;
+        font-family: Segoe UI;
+        font-size: 14px;
+        line-height: 21px;
+        border-radius: 7px;
+        padding: 3px 10px;
+        padding-right: 60px;
+    }
+    
+    .add-on {
+        border: 1px solid #444D56;
+        color: #a7abaf;
+        height: 18px;
+        width: 18px;
+        padding: 0px 5px;
+        position: absolute;
+        right: 10px;
+        top: 6px;
+        border-radius: 3px;
+    }
+
+    .mobile-actions{
+        padding: 2% 3%;
+    }
+
+    .mobile-border{
+        border: 1px solid #444D56;
+        margin: 2px 0px;
+    }
+
+    .mobile-links{
+        padding: 7px 0px;
+        font-family: Segoe UI;
+        font-size: 14px;
+        line-height: 21px;
+        color: #FFFFFF;
+        font-weight: 500;
+  
+    }
+
+    .with-profile-avatar{
+        display: flex;
+    
+    }
+
+    .avatar{
+        margin-right: 5px;
+    }
+
+    .fa-sign{
+        margin: auto 1px;
+        padding-right: 3px;
+        font-size: 15px;
+    }
+
+    .fa-sign-out{
+        color: #FFFFFF;
+    }
+
+    .sign-out{
+        display: flex;
+    }
+
+   
+
+
+
+
+
 }

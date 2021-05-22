@@ -13,3 +13,14 @@ const toggleActions = () => {
     actionCard.style.display = "none";
   }
 };
+
+const showNavs = () => {
+  let nav = document.getElementById("mobileNav");
+  if (nav.style.display === "none") {
+    nav.style.display = "block";
+  } else {
+    nav.style.display = "none";
+  }
+};
+
+

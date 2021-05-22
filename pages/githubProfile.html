@@ -9,10 +9,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../styles/githubProfileStyles.css">
   <link rel="stylesheet" href="../font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-  <header>
+  <!-- this header shows on desktop -->
+  <header class="desktop">
 
     <div class="header-content-1">
       <div class="github-logo-avatar"></div>
@@ -55,6 +57,8 @@
 
 
   </header>
+
+  <!-- this section only show on desktop nav when you click on profile avatar arrow or hover on the notification bell -->
   <div class="pop-overs">
     <div class="notification-message" id="notify">
       You have unread notifications
@@ -105,6 +109,81 @@
 
 
     </div>
+  </div>
+
+  <header class="mobile">
+    <div class="header-contents">
+     <div class="hamburger" onclick="showNavs()">
+     <img class="menu" src="../images/menu_black_24dp.svg" alt="">
+     </div>
+     <div class="github-logo-avatar"></div>
+
+     <div class="notification-icon header-icons-spacer">
+      <div class="sup"></div>
+
+      <i class="fa fa-bell-o" aria-hidden="true"></i>
+
+
+     </div>
+
+  </div>
+
+
+  </header>
+ <!-- shows when you click the hamburger -->
+  <div class="header-navs" id="mobileNav">
+    <div class="search-input">
+      <div class="input-text">Search or jump to...</div>
+      <div class="add-on">/</div>
+    </div>
+
+    <div class="mobile-actions">
+
+      <div class="mobile-border"></div>
+
+    <div class="mobile-links">Dashboard</div>
+    <div class="mobile-border"></div>
+
+    <div class="mobile-links">Pull requests</div>
+    <div class="mobile-border"></div>
+
+  
+    <div class="mobile-links">Issues</div>
+
+    <div class="mobile-border"></div>
+    <div class="mobile-links">Marketplace</div>
+
+    <div class="mobile-border"></div>
+    <div class="mobile-links">Explore</div>
+
+    <div class="mobile-border"></div>
+    <div class="mobile-links">Codespaces</div>
+
+    <div class="mobile-border"></div>
+    <div class="mobile-links">Sponsors</div>
+
+    <div class="mobile-border"></div>
+    <div class="mobile-links">Settings</div>
+
+    <div class="mobile-border"></div>
+    <div class="with-profile-avatar">
+      <div class="avatar"></div>
+      <div class="mobile-links">ezeugwadavid</div>
+
+    </div>
+
+    <div class="mobile-border"></div>
+
+     <div class="sign-out">
+       <div class="fa-sign">  
+        <img src="../images/logout_black_24dp.svg" alt="">
+      </div>
+  
+    <div class="mobile-links">Sign out</div>
+    </div>
+
+    </div>
+   
   </div>
 
 
