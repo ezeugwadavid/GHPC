@@ -111,80 +111,163 @@
     </div>
   </div>
 
+
+
   <header class="mobile">
     <div class="header-contents">
-     <div class="hamburger" onclick="showNavs()">
-     <img class="menu" src="../images/menu_black_24dp.svg" alt="">
-     </div>
-     <div class="github-logo-avatar"></div>
+      <div class="hamburger" onclick="showNavs()">
+        <img class="menu" src="../images/menu_black_24dp.svg" alt="">
+      </div>
+      <div class="github-logo-avatar"></div>
 
-     <div class="notification-icon header-icons-spacer">
-      <div class="sup"></div>
+      <div class="notification-icon header-icons-spacer">
+        <div class="sup"></div>
 
-      <i class="fa fa-bell-o" aria-hidden="true"></i>
+        <i class="fa fa-bell-o" aria-hidden="true"></i>
 
 
-     </div>
+      </div>
 
-  </div>
+    </div>
 
 
   </header>
- <!-- shows when you click the hamburger -->
-  <div class="header-navs" id="mobileNav">
-    <div class="search-input">
-      <div class="input-text">Search or jump to...</div>
-      <div class="add-on">/</div>
-    </div>
-
-    <div class="mobile-actions">
-
-      <div class="mobile-border"></div>
-
-    <div class="mobile-links">Dashboard</div>
-    <div class="mobile-border"></div>
-
-    <div class="mobile-links">Pull requests</div>
-    <div class="mobile-border"></div>
-
-  
-    <div class="mobile-links">Issues</div>
-
-    <div class="mobile-border"></div>
-    <div class="mobile-links">Marketplace</div>
-
-    <div class="mobile-border"></div>
-    <div class="mobile-links">Explore</div>
-
-    <div class="mobile-border"></div>
-    <div class="mobile-links">Codespaces</div>
-
-    <div class="mobile-border"></div>
-    <div class="mobile-links">Sponsors</div>
-
-    <div class="mobile-border"></div>
-    <div class="mobile-links">Settings</div>
-
-    <div class="mobile-border"></div>
-    <div class="with-profile-avatar">
-      <div class="avatar"></div>
-      <div class="mobile-links">ezeugwadavid</div>
-
-    </div>
-
-    <div class="mobile-border"></div>
-
-     <div class="sign-out">
-       <div class="fa-sign">  
-        <img src="../images/logout_black_24dp.svg" alt="">
+  <!-- shows when you click the hamburger -->
+  <div class="nav-container">
+    <div class="header-navs" id="mobileNav">
+      <div class="search-input">
+        <div class="input-text">Search or jump to...</div>
+        <div class="add-on">/</div>
       </div>
-  
-    <div class="mobile-links">Sign out</div>
-    </div>
+
+      <div class="mobile-actions">
+
+        <div class="mobile-border"></div>
+
+        <div class="mobile-links">Dashboard</div>
+        <div class="mobile-border"></div>
+
+        <div class="mobile-links">Pull requests</div>
+        <div class="mobile-border"></div>
+
+
+        <div class="mobile-links">Issues</div>
+
+        <div class="mobile-border"></div>
+        <div class="mobile-links">Marketplace</div>
+
+        <div class="mobile-border"></div>
+        <div class="mobile-links">Explore</div>
+
+        <div class="mobile-border"></div>
+        <div class="mobile-links">Codespaces</div>
+
+        <div class="mobile-border"></div>
+        <div class="mobile-links">Sponsors</div>
+
+        <div class="mobile-border"></div>
+        <div class="mobile-links">Settings</div>
+
+        <div class="mobile-border"></div>
+        <div class="with-profile-avatar">
+          <div class="avatar"></div>
+          <div class="mobile-links">ezeugwadavid</div>
+
+        </div>
+
+        <div class="mobile-border"></div>
+
+        <div class="sign-out">
+          <div class="fa-sign">
+            <img src="../images/logout_black_24dp.svg" alt="">
+          </div>
+
+          <div class="mobile-links">Sign out</div>
+        </div>
+
+      </div>
 
     </div>
-   
+
   </div>
+
+  <!-- this is the content of the page -->
+  <div class="hr"></div>
+  <main>
+
+    <div class="profile-details">
+      <div class="image-container">
+
+        <div class="smiley" id="smiley" onmouseover="showSetStatus()" onmouseout="changeSetStatus()"><i
+            class="fa fa-smile-o" aria-hidden="true"></i>
+          <div class="status" id="setStatus">Set status</div>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+          alt="">
+      </div>
+    </div>
+    <div class="repo-details">
+      <div class="tabs">
+        <div class="tab-one" id="tabOne" onclick="showBorder1()">
+          <div class="book-icon">
+            <img src="../images/book.svg" alt="">
+          </div>
+          <div class="tab-item">Overview</div>
+
+
+
+        </div>
+
+
+
+        <div class="tab-two" id="tabTwo" onclick="showBorder2()">
+          <div class="repo-icon">
+            <img src="../images/repo.svg" alt="">
+
+          </div>
+          <div class="tab-item">Repositories</div>
+          <div class="badge">
+            <div class="num">20</div>
+          </div>
+
+
+        </div>
+
+        <div class="tab-three" id="tabThree" onclick="showBorder3()">
+          <div class="project-icon">
+            <img src="../images/project.svg" alt="">
+          </div>
+          <div class="tab-item">Projects</div>
+        </div>
+
+        <div class="tab-four" id="tabFour" onclick="showBorder4()">
+          <div class="cubic-icon">
+            <img src="../images/box.svg" alt="">
+          </div>
+          <div class="tab-item">Packages</div>
+        </div>
+
+      </div>
+
+      <div class="borders">
+        <div class="tab-border over" id="tab1"></div>
+        <div class="tab-border repo" id="tab2"></div>
+        <div class="tab-border proj" id="tab3"></div>
+        <div class="tab-border pack" id="tab4"></div>
+      </div>
+
+
+
+    </div>
+
+
+
+  </main>
+
+
+
+
 
 
 

@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+/** Navigations / Header **/
+
 header{
     display: flex;
     justify-content: space-between;
@@ -117,9 +119,9 @@ header{
 }
 
 .profile-actions{
-    position: relative;
+    position: absolute;
     right: 55px;
-    bottom: 10px;
+    top: 50px;
     width: 180px;
     box-shadow: 3px 3px 3px 3px #E1E4E8;
     background-color: #FFFFFF;
@@ -128,6 +130,8 @@ header{
     z-index: 2;
     
 }
+
+
 
 .username-container{
     padding: 12px;
@@ -273,12 +277,216 @@ padding: 12px 0px;
     background-size: cover;
 }
 
+
+
 .header-navs{
     display: none;
 }
 
+/** Main content of the page **/
+main{
+    display: flex;
+    justify-content: center;
+    padding: 3% 5%;
+    max-width: 1500px;
+    margin: 0px auto;
+    
+}
+
+
+.profile-details{
+    width: 30%;
+}
+
+.image-container{
+    margin: 2% 2%;
+}
+
+.image-container img{
+    border-radius: 50%;
+    width: 17.5rem;
+    height: 17.5rem;
+    object-fit: cover;
+}
+
+.smiley{
+    position: absolute;
+    top: 18.75rem;
+    left: 20.313rem;
+    background-color: #FFFFFF;
+    color: #81878E;
+    box-shadow: 1px 1px 1px 1px #E1E4E8;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+}
+
+
+.status{
+    display: none;
+    margin-left: 5px;
+    color: #81878E;
+    font-family: Segoe UI;
+    font-size: 12px;
+ 
+
+}
+
+.status:hover{
+    color: #0368D6;  
+
+}
+
+.fa-smile-o:hover{
+    color: #0368D6;
+
+}
+
+.hr{
+   border: 1px solid #EAECEF;
+   position: relative;
+   top: 85px;
+   z-index: -1;
+  
+}
+
+
+
+.repo-details{
+    width: 70%;
+  
+}
+
+.tabs{
+    display: flex;
+  
+}
+
+.tab-one, .tab-two, .tab-three, .tab-four{
+    display: flex;
+    margin: 0px 20px;
+    color: #24292E;
+    font-size: 14px;
+    line-height: 30px;
+    font-family: Segoe UI;
+    cursor: pointer;
+}
+
+
+
+.borders{
+    display: flex;
+    position: relative;
+    top: 6px;
+   
+}
+
+.tab-border{
+   
+    width: 100px;
+    margin: 0% 1%;
+    cursor: pointer;
+}
+
+.repo{
+    border: 1px solid #F9826C;
+    width: 160px;
+    visibility: visible;
+    
+    
+}
+
+
+
+
+.over{
+    border: 1px solid #F9826C;
+    visibility: hidden;
+   
+  
+}
+
+
+
+
+
+
+.proj{
+    border: 1px solid #F9826C;
+    visibility: hidden;
+    
+}
+
+.pack{
+    border: 1px solid #F9826C;
+    visibility: hidden;
+    
+}
+
+
+
+.tab-item{
+    margin: auto 5px;
+}
+
+.book-icon img{
+    margin-top: 8px;
+
+}
+
+.repo-icon img{
+    margin-top: 8px;
+
+}
+
+.badge{
+    margin: auto 0px;
+    font-family: Segoe UI;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 10px;
+    height: 18px;
+    width: 18px;
+    background-color: #E8EAEC; 
+    border-radius: 40%;
+}
+
+.num{
+    margin: 4px 3px;
+}
+
+.project-icon img{
+    margin-top: 8px;
+
+}
+
+.cubic-icon img{
+    margin-top: 8px;
+
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width: 769px){
+    /** Navigations / Header **/
+
+    /* mobile nav links should be invisible on desktop when mobile nav is open */
+    .nav-container{
+        display: none;
+    }
+
+}
+
 
 @media screen and (max-width: 768px){
+
+    /** Navigations / Header **/
     .desktop{
         display: none;
     }
