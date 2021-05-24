@@ -152,6 +152,20 @@ const showBorder4 = () => {
 }
 
 
+const showDesc = () => {
+  document.getElementById("repo-desc").style.display = "block";
+  document.getElementById("desc-arrow").style.display = "block";
+
+}
+const hideDesc = () => {
+  document.getElementById("repo-desc").style.display = "none";
+  document.getElementById("desc-arrow").style.display = "none";
+
+}
+
+
+
+
 
 
 

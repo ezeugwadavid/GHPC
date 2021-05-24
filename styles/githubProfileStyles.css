@@ -105,12 +105,12 @@ header{
 }
 
 .notification-message{
-    position: relative;
+    position: absolute;
     right: 150px;
-    bottom: 10px;
-    display: none;
+    bottom: 595px;
+    display: none;  
     color: #FFFFFF;
-    z-index: 2;
+    z-index: 1;
     border-radius: 5px;
     padding: 5px;
     font-family: Segoe UI;
@@ -309,10 +309,15 @@ main{
     object-fit: cover;
 }
 
+.img-simley-container{
+    display: flex;
+}
+
 .smiley{
-    position: absolute;
-    top: 18.75rem;
-    left: 20.313rem;
+    position: relative;
+    top: 50px;
+    right: 25px;
+    margin: auto 2px;
     background-color: #FFFFFF;
     color: #81878E;
     box-shadow: 1px 1px 1px 1px #E1E4E8;
@@ -320,12 +325,14 @@ main{
     padding: 10px;
     cursor: pointer;
     display: flex;
+    
 }
 
 
 .status{
     display: none;
     margin-left: 5px;
+    width: 60px;
     color: #81878E;
     font-family: Segoe UI;
     font-size: 12px;
@@ -466,6 +473,200 @@ main{
 
 }
 
+.input{
+   margin-top: 30px;
+}
+
+.input input{
+    font-family: Segoe UI;
+    font-weight: 400;
+    color: #24292E;
+    font-size: 14px;
+    padding: 7px;
+    width: 100%;
+    border: 1px solid #EAECEF;
+    border-radius: 7px;
+    /* -webkit-transition: all 0.30s ease-in-out; */
+   
+}
+
+.input input:focus{
+    border-radius: 7px;
+    outline: none;
+    border: 2px solid #4284ca;
+    box-shadow: 0px 0px 5px #4284ca;
+    
+
+}
+
+.repo-hr{
+    border: 1px solid #EAECEF;
+    margin-top: 15px;
+}
+
+.repo-num{
+    width: fit-content;
+    padding: 2% 0%;
+    font-family: Segoe UI;
+    font-weight: 500;
+    color: #24292E;
+    font-size: 13px;
+}
+
+.repo-wrapper{
+    padding: 2% 0%;
+}
+
+.name-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.repo-name{
+    font-family: Segoe UI;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #0366D6;
+
+}
+
+.repo-name:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.repo-desc{
+    margin: 7px 0px;
+    color: #586069;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: Segoe UI;
+}
+
+.repo-border{
+    width: 150px;
+    float: right;
+    margin-top: 5px;
+    border: 1px solid #B9F0C2;
+    cursor: pointer;
+}
+
+.repo-type{
+    display: flex;
+    font-family: Segoe UI;
+    font-size: 12px;
+    line-height: 18px;
+    color: #586069;
+    margin: 20px 0px;
+}
+
+.type{
+    display: flex;
+    margin-right: 10px;
+}
+
+.color{
+border: 1px solid #FFFFFF;
+width: 14px;
+height: 14px;
+border-radius: 50%;
+background-color: #563D7C;
+margin-right: 3px;
+margin-top: auto;
+margin-bottom: auto;
+
+}
+
+.html{
+    margin: auto 0px;
+}
+
+.stars{
+    margin-right: 10px;
+    display: flex;
+}
+
+.unstar-icon{
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-bottom: auto;
+}
+
+.star-num{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.forks{
+    margin-right: 10px;
+    display: flex;
+}
+
+.fork-icon{
+   margin-right: 3px;
+   margin-top: auto;
+   margin-bottom: auto;
+}
+.time{
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.hr-desc{
+    background-color: #24292E;
+    padding: 5px;
+    font-size: 12px;
+    font-family: Segoe UI;
+    float: right;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin-left: auto;
+    position: relative;
+    top: 20px;
+    z-index: 2;
+    display: none;
+}
+
+.arrow {
+    border: solid 15px transparent;
+    border-bottom-color: #24292E;
+    position: relative;
+    right: 70px;
+    display: none;
+}
+
+.star-icon{
+    border-radius: 6px;
+    display: flex;
+    padding: 3px 10px;
+    cursor: pointer;
+    border: 1px solid #D9DBDB;
+    background-color: #FAFBFC;
+}
+
+.star-icon:hover{
+    background-color: #fafbfc88 !important;
+}
+
+.star-icon img{
+    margin: auto 0px;
+    padding-right: 5px;
+}
+
+.star{
+    margin: auto 0px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    font-family: Segoe UI;
+    
+}
+
+
+
 
 
 
@@ -483,6 +684,195 @@ main{
 
 }
 
+@media screen and (min-width: 1558px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 89px;
+        z-index: -1;
+       
+     }
+
+}
+
+
+@media screen and (min-width: 1670px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 92px;
+        z-index: -1;
+       
+     }
+
+}
+
+
+@media screen and (min-width: 1777px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 96px;
+        z-index: -1;
+       
+     }
+
+}
+
+@media screen and (min-width: 1868px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 100px;
+        z-index: -1;
+       
+     }
+
+}
+
+@media screen and (min-width: 1987px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 104px;
+        z-index: -1;
+       
+     }
+
+}
+@media screen and (min-width: 2130px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 108px;
+        z-index: -1;
+       
+     }
+
+}
+@media screen and (min-width: 2296px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 113px;
+        z-index: -1;
+       
+     }
+
+}
+@media screen and (min-width: 2448px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 116px;
+        z-index: -1;
+       
+     }
+
+}
+@media screen and (min-width: 2530px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 120px;
+        z-index: -1;
+       
+     }
+
+}
+@media screen and (min-width: 2700px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 125px;
+        z-index: -1;
+       
+     }
+
+}
+@media screen and (min-width: 2900px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 127px;
+        z-index: -1;
+       
+     }
+
+}
+
+
+
+@media screen and (min-width: 3400px){
+    /** Main content of the page **/
+      /* trying to catch the hr.. */
+
+      
+      .hr{
+        border: 1px solid #EAECEF;
+        position: relative;
+        top: 210px;
+        z-index: -1;
+       
+     }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 768px){
 
@@ -493,6 +883,16 @@ main{
 
     .mobile{
         display: block;
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3% 5%;
+        max-width: 1500px;
+        margin: 0px auto;
+        
     }
 
     .pop-overs{

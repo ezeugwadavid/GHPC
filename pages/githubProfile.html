@@ -198,13 +198,18 @@
     <div class="profile-details">
       <div class="image-container">
 
-        <div class="smiley" id="smiley" onmouseover="showSetStatus()" onmouseout="changeSetStatus()"><i
-            class="fa fa-smile-o" aria-hidden="true"></i>
-          <div class="status" id="setStatus">Set status</div>
+
+        <div class="img-simley-container">
+          <img
+            src="https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+            alt="">
+          <div class="smiley" id="smiley" onmouseover="showSetStatus()" onmouseout="changeSetStatus()"><i
+              class="fa fa-smile-o" aria-hidden="true"></i>
+            <div class="status" id="setStatus">Set status</div>
+          </div>
+
         </div>
-        <img
-          src="https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-          alt="">
+
       </div>
     </div>
     <div class="repo-details">
@@ -256,10 +261,83 @@
         <div class="tab-border proj" id="tab3"></div>
         <div class="tab-border pack" id="tab4"></div>
       </div>
+      <div class="middle-tab">
+        <div class="input">
+          <input type="text" placeholder="Find a repository...">
+        </div>
+        <div class="repo-hr"></div>
+
+        <div class="repo-num">
+          <div class="desc">124 results for public repositories</div>
+          <div class="repo-hr"></div>
+
+        </div>
+
+
+
+
+
+        <div class="dynamic-repositories-fetch">
+          <div class="repo-wrapper">
+            <div class="name-container">
+              <div class="repo-name">ireaderinoku.com</div>
+
+
+              <div class="star-icon">
+                <img src="../images/star_outline_black_24dp.svg" alt="">
+                <div class="star"> Star</div>
+              </div>
+            </div>
+
+            <div class="repo-desc">This is the repo for epic mail</div>
+
+            <div class="repo-border" onmouseout="hideDesc()" onmouseover="showDesc()"></div>
+
+            <div class="repo-type">
+              <div class="type">
+                <div class="color"></div>
+                <div class="html">HTML</div>
+
+              </div>
+
+              <div class="stars">
+                <div class="unstar-icon"><img src="../images/star_outline_sm.svg" alt=""></div>
+                <div class="star-num">22</div>
+
+              </div>
+              <div class="forks">
+                <div class="fork-icon"><img src="../images/repo-forked.svg" alt=""></div>
+                <div class="star-num">1</div>
+
+              </div>
+
+              <div class="time">Updated on 4 Sep</div>
+
+              <div class="hr-desc" id="repo-desc">Past year of activity</div>
+              <div class="arrow" id="desc-arrow"></div>
+
+
+            </div>
+
+            <div class="repo-hr"></div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+
+
 
 
 
     </div>
+
 
 
 
