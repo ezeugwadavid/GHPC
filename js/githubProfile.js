@@ -163,6 +163,18 @@ const hideDesc = () => {
 
 }
 
+const showLabel = () => {
+  document.getElementById("avatar-arrow").style.display = "block";
+  document.getElementById("change-avatar").style.display = "block";
+
+}
+
+const hideLabel = () => {
+  document.getElementById("avatar-arrow").style.display = "none";
+  document.getElementById("change-avatar").style.display = "none";
+
+}
+
 
 
 
