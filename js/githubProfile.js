@@ -21,7 +21,6 @@ const showNavs = () => {
     nav.style.display = "block";
   } else {
     nav.style.display = "none";
-
   }
 };
 
@@ -42,8 +41,7 @@ const changeSetStatus = () => {
 }
 
 const showBorder1 = () => {
-  
-  
+ 
   let tab1 = document.getElementById("tab1");
   let tab2 = document.getElementById("tab2");
   let tab3 = document.getElementById("tab3");
@@ -53,6 +51,7 @@ const showBorder1 = () => {
   let tabtwo = document.getElementById("tabTwo");
   let tabthree = document.getElementById("tabThree");
   let tabfour = document.getElementById("tabFour");
+
 
     tab1.style.visibility = "visible"; 
     tab2.style.visibility = "hidden"; 
@@ -64,16 +63,28 @@ const showBorder1 = () => {
     tabthree.style.fontWeight = "400"; 
     tabfour.style.fontWeight = "400"; 
 
-
+    showEmptyPage1();
+    
 
 
 }
 
 
+const showEmptyPage1 = () => {
+  let firsttab = document.getElementById("first-tab");
+  let secondtab = document.getElementById("second-tab");
+  let thirdtab = document.getElementById("third-tab");
+  let fourthtab = document.getElementById("fourth-tab");
+
+  firsttab.style.display = "block";
+  secondtab.style.display = "none";
+  thirdtab.style.display = "none";
+  fourthtab.style.display = "none";
+ 
+}
+
+
 const showBorder2 = () => {
-  
-  
-   
   let tab1 = document.getElementById("tab1");
   let tab2 = document.getElementById("tab2");
   let tab3 = document.getElementById("tab3");
@@ -84,6 +95,8 @@ const showBorder2 = () => {
   let tabthree = document.getElementById("tabThree");
   let tabfour = document.getElementById("tabFour");
 
+
+
     tab1.style.visibility = "hidden"; 
     tab2.style.visibility = "visible"; 
     tab3.style.visibility = "hidden"; 
@@ -93,9 +106,25 @@ const showBorder2 = () => {
     tabtwo.style.fontWeight = "600"; 
     tabthree.style.fontWeight = "400"; 
     tabfour.style.fontWeight = "400"; 
+    showEmptyPage2();
 
 
 }
+
+const showEmptyPage2 = () => {
+  let firsttab = document.getElementById("first-tab");
+  let secondtab = document.getElementById("second-tab");
+  let thirdtab = document.getElementById("third-tab");
+  let fourthtab = document.getElementById("fourth-tab");
+
+  firsttab.style.display = "none";
+  secondtab.style.display = "block";
+  thirdtab.style.display = "none";
+  fourthtab.style.display = "none";
+ 
+}
+
+
 
 const showBorder3 = () => {
   
@@ -111,6 +140,10 @@ const showBorder3 = () => {
   let tabthree = document.getElementById("tabThree");
   let tabfour = document.getElementById("tabFour");
 
+ 
+
+
+
     tab1.style.visibility = "hidden"; 
     tab2.style.visibility = "hidden"; 
     tab3.style.visibility = "visible"; 
@@ -121,7 +154,20 @@ const showBorder3 = () => {
     tabthree.style.fontWeight = "600"; 
     tabfour.style.fontWeight = "400"; 
 
+    showEmptyPage3();
+}
 
+const showEmptyPage3 = () => {
+  let firsttab = document.getElementById("first-tab");
+  let secondtab = document.getElementById("second-tab");
+  let thirdtab = document.getElementById("third-tab");
+  let fourthtab = document.getElementById("fourth-tab");
+
+  firsttab.style.display = "none";
+  secondtab.style.display = "none";
+  thirdtab.style.display = "block";
+  fourthtab.style.display = "none";
+ 
 }
 
 const showBorder4 = () => {
@@ -148,7 +194,22 @@ const showBorder4 = () => {
     tabthree.style.fontWeight = "400"; 
     tabfour.style.fontWeight = "600"; 
 
+    showEmptyPage4();
 
+
+}
+
+const showEmptyPage4 = () => {
+  let firsttab = document.getElementById("first-tab");
+  let secondtab = document.getElementById("second-tab");
+  let thirdtab = document.getElementById("third-tab");
+  let fourthtab = document.getElementById("fourth-tab");
+
+  firsttab.style.display = "none";
+  secondtab.style.display = "none";
+  thirdtab.style.display = "none";
+  fourthtab.style.display = "block";
+ 
 }
 
 
