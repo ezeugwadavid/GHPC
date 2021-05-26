@@ -1005,7 +1005,7 @@ margin-bottom: auto;
 
 
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1024px){
 
     /** Navigations / Header **/
     .desktop{
@@ -1400,5 +1400,11 @@ font-size: 24px;
         visibility: hidden;
         
     }
+
+    .hr{
+        position: relative;
+        top: 260px;
+        width: 100vw;
+     }
     
 }
