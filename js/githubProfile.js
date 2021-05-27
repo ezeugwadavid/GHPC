@@ -1,3 +1,9 @@
+const result = window.localStorage.getItem('username');
+console.log(result);
+
+const results = window.localStorage.getItem("data");
+console.log(results);
+
 const notificationDesc = () => {
   document.getElementById("notify").style.display = "block";
 };
