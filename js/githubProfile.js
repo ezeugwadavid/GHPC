@@ -1,8 +1,242 @@
-const result = window.localStorage.getItem('username');
-console.log(result);
+const username = localStorage.getItem('username');
+console.log(username);
 
-const results = window.localStorage.getItem("data");
-console.log(results);
+
+
+
+
+
+
+
+
+
+
+const getRepoDetails = () => {
+  const token =  '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';
+
+  const query = `query { 
+    user(login: "${username}") {
+      websiteUrl
+      bio
+      avatarUrl(size: 500)
+      name
+      login
+      repositories(last: 20, orderBy: {field: CREATED_AT, direction: DESC}) {
+        nodes {
+          name
+          description
+          forkCount
+          stargazerCount
+          updatedAt
+          languages(orderBy: {field: SIZE, direction: DESC}, last: 20) {
+            nodes {
+              color
+              name
+            }
+          }
+        }
+      }
+      
+  
+    }
+  
+
+}`;
+
+
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${
+          token
+        }`
+    },
+
+    
+    body: JSON.stringify({ query })
+  };
+
+  fetch(`https://api.github.com/graphql`, options)
+  .then(response => {
+      
+      response.json().then( data => {
+        localStorage.setItem('data', data);
+        console.log(data);
+
+        const user = data.data.user
+        const avatar = user.avatarUrl
+
+         document.getElementById("avatar").style.backgroundImage = `url(${avatar})`;
+         document.getElementById("mobile-avatar").style.backgroundImage = `url(${avatar})`;
+         document.getElementById("img-lg").src = `${avatar}`;
+         document.getElementById("profile-name").innerHTML = user.name;
+         document.getElementById("profile-username").innerHTML = user.login;
+
+         const bio = () => {
+           if(user.bio !== null){
+            document.getElementById("bio").innerHTML = user.bio;
+            document.getElementById("bio-mobile").innerHTML = user.bio;
+
+           } else {
+            document.getElementById("bio").innerHTML = '';
+
+           }
+         };
+         bio();
+         const repoCount =  data.data.user.repositories.nodes.length;
+         document.getElementById("desc").innerHTML = `${repoCount} results for public repositories`
+         console.log(repoCount);
+         
+        
+        processQuery(data);
+      })
+    
+  }).catch(err => console.log(err));  
+}
+
+
+
+ const processQuery = (datas) => {
+   const repoDetails = datas.data.user.repositories.nodes;
+  
+  
+  let output = "";
+   repoDetails.forEach((object) => {
+     const repoName = object.name;
+     const description = () => {
+       if (object.description != null){
+         return object.description;
+       } else {
+         return '';
+       }
+     }
+
+     const forkCount = object.forkCount;
+     const stargazerCount = object.stargazerCount;
+     const updatedAt = new Date(object.updatedAt);
+     const date = updatedAt.toDateString();
+     const languages = object.languages.nodes
+
+
+     const language = () => {
+       if (languages.length !== 0){
+         return languages[0].name;
+       } else {
+         return 'HTML';
+       }
+     }
+    
+
+     const languageColor = () => {
+
+      if (languages.length !== 0){
+       
+        return languages[0].color;
+      } else {
+        return '#563D7C';
+      }
+
+     }
+
+    
+
+   
+
+
+    output += `
+
+    <div class="repo-wrapper">
+    <div class="name-container">
+      <div class="repo-name">${repoName}</div>
+
+
+      <div class="star-icon">
+        <img src="../images/star_outline_black_24dp.svg" alt="">
+        <div class="star"> Star</div>
+      </div>
+    </div>
+
+    <div class="repo-desc">${description()}</div>
+
+    <div class="repo-border" onmouseout="hideDesc()" onmouseover="showDesc()"></div>
+
+    <div class="repo-type">
+      <div class="type">
+        <div class="color" style="background-color: ${languageColor()}"></div>
+        <div class="html">${language()}</div>
+      </div>
+
+      <div class="stars">
+        <div class="unstar-icon"><img src="../images/star_outline_sm.svg" alt=""></div>
+        <div class="star-num">${stargazerCount}</div>
+
+      </div>
+      <div class="forks">
+        <div class="fork-icon"><img src="../images/repo-forked.svg" alt=""></div>
+        <div class="star-num">${forkCount}</div>
+
+      </div>
+
+      <div class="time">Updated on ${date}</div>
+
+      <div class="hr-desc" id="repo-desc">Past year of activity</div>
+      <div class="arrow" id="desc-arrow"></div>
+
+
+    </div>
+
+    <div class="repo-hr"></div>
+
+
+
+  </div>
+
+
+
+    `;
+
+    
+
+  
+
+    
+   
+  });
+ 
+
+  document.getElementById("dynamic-repositories-fetch").innerHTML = output;
+  
+
+
+
+
+
+}
+
+getRepoDetails();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const notificationDesc = () => {
   document.getElementById("notify").style.display = "block";

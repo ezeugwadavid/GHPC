@@ -270,7 +270,7 @@ padding: 12px 0px;
 .avatar{
     width: 22px;
     height: 22px;
-    margin: auto 0;
+    margin-top: 5px;
     border-radius: 50%;
     background-image: url("https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     background-position: center;
@@ -308,6 +308,10 @@ main{
     height: 17.5rem;
     object-fit: cover;
     cursor: pointer;
+}
+
+#img-lg{
+    object-fit: contain;
 }
 
 .img-simley-container{
@@ -805,7 +809,7 @@ margin-bottom: auto;
 
 
 
-@media screen and (min-width: 769px){
+@media screen and (min-width: 1025px){
     /** Navigations / Header **/
 
     /* mobile nav links should be invisible on desktop when mobile nav is open */
