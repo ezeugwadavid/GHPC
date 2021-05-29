@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>profile</title>
+    <meta name="description" content="profile" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg" href="../images/github.svg" />
+    <link rel="stylesheet" href="../styles/githubProfileStyles.css" />
+    <link
+      rel="stylesheet"
+      href="../font-awesome/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+
+  <body>
+    <div class="body" id="body">
+      <!-- this header shows on desktop -->
+      <header class="desktop">
+        <div class="header-content-1">
+          <div class="github-logo-avatar"></div>
+          <div class="search-input">
+            <div class="input-text">Search or jump to...</div>
+            <div class="add-on">/</div>
+          </div>
+
+          <div class="header-links">Pull Requests</div>
+          <div class="header-links">Issues</div>
+          <div class="header-links">Marketplace</div>
+          <div class="header-links">Explore</div>
+        </div>
+
+        <div class="header-content-2">
+          <div class="notification-icon header-icons-spacer">
+            <div class="sup"></div>
+
+            <i
+              class="fa fa-bell-o"
+              aria-hidden="true"
+              onmouseout="notificationDescRemove()"
+              onmouseover="notificationDesc()"
+            ></i>
+          </div>
+
+          <div class="plus header-icons-spacer">
+            <div class="add-icon">+</div>
+            <i class="fa icon fa-caret-down" aria-hidden="true"></i>
+          </div>
+          <div class="plus header-icons-spacer">
+            <div class="avatar" id="avatar"></div>
+            <i
+              class="fa fa-caret-down"
+              onclick="toggleActions()"
+              aria-hidden="true"
+            ></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- this section only show on desktop nav when you click on profile avatar arrow or hover on the notification bell -->
+      <div class="pop-overs">
+        <div class="notification-message" id="notify">
+          You have unread notifications
+        </div>
+
+        <div class="profile-actions" id="actions">
+          <div class="username-container">
+            <div class="user-desc">Signed in as</div>
+            <div class="user-desc bold">ezeugwadavid</div>
+          </div>
+
+          <div class="border"></div>
+          <div class="status-container">
+            <div class="set-status">
+              <i class="fa fa-smile-o" aria-hidden="true"></i> Set status
+            </div>
+          </div>
+
+          <div class="border"></div>
+
+          <div class="actions-container">
+            <div class="text-action">Your profile</div>
+            <div class="text-action">Your repositories</div>
+            <div class="text-action">Your codespaces</div>
+            <div class="text-action">Your organisations</div>
+            <div class="text-action">Your projects</div>
+            <div class="text-action">Your stars</div>
+            <div class="text-action">Your gists</div>
+          </div>
+          <div class="border"></div>
+
+          <div class="actions-container">
+            <div class="text-action">Upgrade</div>
+            <div class="text-action">Feature preview</div>
+            <div class="text-action">Help</div>
+            <div class="text-action">Settings</div>
+          </div>
+
+          <div class="border"></div>
+
+          <div class="actions-container">
+            <div class="text-action" onclick="logout()">Sign out</div>
+          </div>
+        </div>
+      </div>
+
+      <header class="mobile">
+        <div class="header-contents">
+          <div class="hamburger" onclick="showNavs()">
+            <img class="menu" src="../images/menu_black_24dp.svg" alt="" />
+          </div>
+          <div class="github-logo-avatar"></div>
+
+          <div class="notification-icon header-icons-spacer">
+            <div class="sup"></div>
+
+            <i class="fa fa-bell-o" aria-hidden="true"></i>
+          </div>
+        </div>
+      </header>
+      <!-- shows when you click the hamburger -->
+      <div class="nav-container">
+        <div class="header-navs" id="mobileNav">
+          <div class="search-input">
+            <div class="input-text">Search or jump to...</div>
+            <div class="add-on">/</div>
+          </div>
+
+          <div class="mobile-actions">
+            <div class="mobile-border"></div>
+
+            <div class="mobile-links">Dashboard</div>
+            <div class="mobile-border"></div>
+
+            <div class="mobile-links">Pull requests</div>
+            <div class="mobile-border"></div>
+
+            <div class="mobile-links">Issues</div>
+
+            <div class="mobile-border"></div>
+            <div class="mobile-links">Marketplace</div>
+
+            <div class="mobile-border"></div>
+            <div class="mobile-links">Explore</div>
+
+            <div class="mobile-border"></div>
+            <div class="mobile-links">Codespaces</div>
+
+            <div class="mobile-border"></div>
+            <div class="mobile-links">Sponsors</div>
+
+            <div class="mobile-border"></div>
+            <div class="mobile-links">Settings</div>
+
+            <div class="mobile-border"></div>
+            <div class="with-profile-avatar">
+              <div class="avatar" id="mobile-avatar"></div>
+              <div class="mobile-links">ezeugwadavid</div>
+            </div>
+
+            <div class="mobile-border"></div>
+
+            <div class="sign-out">
+              <div class="fa-sign">
+                <img src="../images/logout_black_24dp.svg" alt="" />
+              </div>
+
+              <div class="mobile-links">Sign out</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- this is the content of the page -->
+      <div class="hr"></div>
+      <main>
+        <div class="profile-details">
+          <div class="image-container">
+            <div class="details-left">
+              <div
+                class="img-simley-container"
+                onmouseover="showLabel()"
+                onmouseout="hideLabel()"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+                  alt=""
+                  id="img-lg"
+                />
+                <div
+                  class="smiley"
+                  id="smiley"
+                  onmouseover="showSetStatus()"
+                  onmouseout="changeSetStatus()"
+                >
+                  <i class="fa fa-smile-o" aria-hidden="true"></i>
+                  <div class="status" id="setStatus">Set status</div>
+                </div>
+              </div>
+
+              <div class="avatar-arrow" id="avatar-arrow"></div>
+              <div class="change-avatar" id="change-avatar">
+                Change your avatar
+              </div>
+            </div>
+
+            <div class="details-right">
+              <div class="user-details">
+                <div class="profile-name" id="profile-name">Ire Aderinokwu</div>
+                <div class="username" id="profile-username">ireade</div>
+                <div class="bio" id="bio">
+                  Frontend Developer and User Interface Designer
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- this part will only appear on mobile -->
+          <div class="smiley-bio-container">
+            <div class="smiley-wrapper">
+              <div class="smiley-mobile">
+                <i class="fa fa-smile-o" aria-hidden="true"></i>
+              </div>
+              <div class="smiley-text">Set status</div>
+            </div>
+            <div class="bio-mobile" id="bio-mobile">
+              Frontend Developer and User Interface Designer
+            </div>
+          </div>
+        </div>
+
+        <div class="repo-details">
+          <div class="tabs">
+            <div class="tab-one" id="tabOne" onclick="showBorder1()">
+              <div class="book-icon">
+                <img src="../images/book.svg" alt="" />
+              </div>
+              <div class="tab-item">Overview</div>
+            </div>
+
+            <div class="tab-two" id="tabTwo" onclick="showBorder2()">
+              <div class="repo-icon">
+                <img src="../images/repo.svg" alt="" />
+              </div>
+              <div class="tab-item">Repositories</div>
+              <div class="badge">
+                <div class="num">20</div>
+              </div>
+            </div>
+
+            <div class="tab-three" id="tabThree" onclick="showBorder3()">
+              <div class="project-icon">
+                <img src="../images/project.svg" alt="" />
+              </div>
+              <div class="tab-item">Projects</div>
+            </div>
+
+            <div class="tab-four" id="tabFour" onclick="showBorder4()">
+              <div class="cubic-icon">
+                <img src="../images/box.svg" alt="" />
+              </div>
+              <div class="tab-item">Packages</div>
+            </div>
+          </div>
+
+          <div class="borders">
+            <div class="tab-border over" id="tab1"></div>
+            <div class="tab-border repo" id="tab2"></div>
+            <div class="tab-border proj" id="tab3"></div>
+            <div class="tab-border pack" id="tab4"></div>
+          </div>
+
+          <div class="first-tab" id="first-tab">
+            <div class="text-large">Sorry, we have nothing here</div>
+            <img src="../images/sad-illustration.jpg" alt="" />
+          </div>
+
+          <div class="second-tab" id="second-tab">
+            <div class="input">
+              <input type="text" placeholder="Find a repository..." />
+            </div>
+            <div class="repo-hr"></div>
+
+            <div class="repo-num">
+              <div class="desc" id="desc">
+                124 results for public repositories
+              </div>
+              <div class="repo-hr"></div>
+            </div>
+
+            <div
+              class="dynamic-repositories-fetch"
+              id="dynamic-repositories-fetch"
+            ></div>
+          </div>
+
+          <div class="third-tab" id="third-tab">
+            <div class="text-large">Sorry, we have nothing here</div>
+            <img src="../images/sad-illustration.jpg" alt="" />
+          </div>
+
+          <div class="fourth-tab" id="fourth-tab">
+            <div class="text-large">Sorry, we have nothing here</div>
+            <img src="../images/sad-illustration.jpg" alt="" />
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="loader">
+      <img id="loader" src="../images/Ripple-1s-200px.gif" alt="" />
+    </div>
+
+    <script src="../js/githubProfile.js" async defer></script>
+  </body>
+</html>

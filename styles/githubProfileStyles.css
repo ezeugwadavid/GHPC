@@ -802,6 +802,24 @@ margin-bottom: auto;
 
 
 
+.loader{
+    display: flex;
+    justify-content: center;
+    margin: 10% auto;
+ }
+ 
+ .loader img{
+     position: relative;
+     width: 300px;
+     height: 300px;
+     display: none;
+ }
+ 
+
+
+
+
+
 
 
 

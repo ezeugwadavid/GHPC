@@ -1,38 +1,25 @@
 
-
-
-
-const renderBooks = ({ data }) => {
-  console.log(data);
-
- 
-}
-
-
-
-
-
-
+// get repos/login logic
 const getRepos = () => {
+  const username = document.getElementById("username").value.trim();
 
-    const username = document.getElementById("username").value.trim();
+  if (username === "") {
+    document.getElementById("error-container").style.display = "block";
+    document.getElementById("mesg").innerHTML = "field must not be empty";
+    setTimeout(function () {
+      document.getElementById("error-container").style.display = "none";
+    }, 4000);
+    return;
+  }
 
-    if (username === ''){
-      document.getElementById("error-container").style.display = "block";
-      document.getElementById("mesg").innerHTML = 'field must not be empty';
-      setTimeout(function(){  document.getElementById("error-container").style.display = "none"; }, 4000);
-      return;
+  document.getElementById("username").value = "";
+  document.getElementById("loader").style.display = "block";
 
-    }
+  localStorage.setItem("username", username);
 
-    document.getElementById("username").value = '';
+  const token = "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";
 
-
-    localStorage.setItem('username', username);
-   
-    const token =  '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';
-
-    const query = `query { 
+  const query = `query { 
       user(login: "${username}") {
         websiteUrl
         bio
@@ -61,55 +48,46 @@ const getRepos = () => {
   
 }`;
 
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
 
-  
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${
-            token
-          }`
-      },
+    body: JSON.stringify({ query }),
+  };
 
-      
-      body: JSON.stringify({ query })
-    };
-  
-    fetch(`https://api.github.com/graphql`, options)
-    .then(response => {
-        
-        response.json().then( data => {
-          localStorage.setItem('data', data);
-          console.log(data);
-          if(data.data.user === null){
-            document.getElementById("error-container").style.display = "block";
-            document.getElementById("mesg").innerHTML = 'user not found';
-            setTimeout(function(){  document.getElementById("error-container").style.display = "none"; }, 4000);
-            return;
+  fetch(`https://api.github.com/graphql`, options)
+    .then((response) => {
+      response.json().then((data) => {
+        localStorage.setItem("data", data);
+        console.log(data);
+        if (data.data.user === null) {
+          document.getElementById("error-container").style.display = "block";
+          document.getElementById("mesg").innerHTML = "user not found";
+          setTimeout(function () {
+            document.getElementById("error-container").style.display = "none";
+          }, 4000);
+          return;
+        }
+        window.location.assign("githubProfile.html");
+        document.getElementById("loader").style.display = "none";
+        processQuery(data);
+      });
+    })
+    .catch((err) => console.log(err));
+};
 
-          }
-          window.location.assign('githubProfile.html');
-          processQuery(data);
-        })
-      
-    }).catch(err => console.log(err));  
-  }
+const processQuery = (datas) => {
+  const repoDetails = datas.data.user.repositories.nodes;
 
+  console.log(repoDetails);
+  let output = "";
+  repoDetails.forEach((object) => {
+    const repoName = object.name;
 
-
-   const processQuery = (datas) => {
-     const repoDetails = datas.data.user.repositories.nodes;
-    
-    console.log(repoDetails);
-    let output = "";
-     repoDetails.forEach((object) => {
-       const repoName = object.name;
-
-     
-
-
-      output += `
+    output += `
 
       <div class="repo-wrapper">
       <div class="name-container">
@@ -161,16 +139,11 @@ const getRepos = () => {
 
 
       `;
-    });
-    console.log(output);
+  });
+  console.log(output);
 
-    document.getElementById("dynamic-repositories-fetch").innerHTML = output;
-  
-
-
-
-
-  }
+  document.getElementById("dynamic-repositories-fetch").innerHTML = output;
+};
 
   
   
