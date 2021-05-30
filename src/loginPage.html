@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>login</title>
+        <meta name="description" content="login">
+        <link rel = "icon" type = "image/svg" href = "./images/github.svg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles/loginStyles.css">
+    </head>
+    <body>
+
+        <div class="main">
+            <div class="github-icon">
+               <img src="./images/github.svg" alt="">
+            </div>
+            <div class="sign-in-text">
+                Sign in to GitHub
+            </div>
+
+            <div class="error-container" id="error-container">
+                <div class="error-mesg">
+                   <div class="mesg" id="mesg"><span>x</span></div>
+                   
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-label-wrapper">
+                    <div class="label">Username</div>
+                    <div class="input">
+                        <input type="text" id="username" placeholder="">
+                      </div>
+
+
+                </div>
+
+                <div class="input-label-wrapper">
+                    <div class="btn">
+                        <button onclick="getRepos()">Sign In</button>
+                      </div>
+
+
+                </div>
+                
+
+            </div>
+            <div class="loader">
+                <img  id="loader" src="./images/Ripple-1s-200px.gif" alt="">
+            </div>
+
+        </div>
+
+        
+        <script src="./js/login.js" async defer></script>
+    </body>
+</html>
