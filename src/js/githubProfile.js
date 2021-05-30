@@ -8,6 +8,7 @@ if (!username) {
   window.location.assign("loginPage.html");
 }
 
+// nav's search field data
 let reposArray = [];
 
 // fetch repo details
@@ -60,7 +61,6 @@ const getRepoDetails = () => {
       response.json().then((data) => {
         console.log(data);
 
-
         const user = data.data.user;
         const avatar = user.avatarUrl;
 
@@ -85,39 +85,45 @@ const getRepoDetails = () => {
           }
         };
         bio();
-        const repoCount = data.data.user.repositories.nodes.length;
-        document.getElementById(
-          "desc"
-        ).innerHTML = `${repoCount} results for public repositories`;
-
-       
         
-    
+        const repoCount = () => {
+          const count = data.data.user.repositories.nodes.length;
+          if(count > 1) {
+            document.getElementById(
+              "desc"
+            ).innerHTML = `${count} results for public repositories`;
+
+          } else {
+            document.getElementById(
+              "desc"
+            ).innerHTML = `${count} result for public repositories`;
+
+          }
+         
+
+        };
+        
+        repoCount();
+
         processQuery(data);
         document.getElementById("body").style.display = "block";
         document.getElementById("loader").style.display = "none";
         searchBarRepos(reposArray, user.login);
-       
-
       });
     })
     .catch((err) => console.log(err));
 };
 
-
-
 const searchBarRepos = (array, user) => {
-  const n = 5 //get the first 5 items from array
-  
+  const n = 5; //get the first 5 items from array
+
   let searchHistory = "";
 
   const newArray = array.slice(0, n);
   console.log(newArray);
 
-
-
   newArray.forEach((reponame) => {
-   searchHistory += `
+    searchHistory += `
     <div class="search-links"  onmouseout="hideRepoSvg()" onmouseover="showRepoSvg()">
 
      <div class="left">
@@ -131,17 +137,10 @@ const searchBarRepos = (array, user) => {
    </div>
 
    `;
-
-
-
-
   });
 
-  document.getElementById("link-container").innerHTML = searchHistory; 
-  
-
+  document.getElementById("link-container").innerHTML = searchHistory;
 };
-
 
 const processQuery = (datas) => {
   const repoDetails = datas.data.user.repositories.nodes;
@@ -239,37 +238,32 @@ const processQuery = (datas) => {
 
 getRepoDetails();
 
-// for the user interface 
+// for the user interface
 
 const showSearch = () => {
-  if (document.getElementById("search-pop-over").style.visibility = "hidden"){
-    document.getElementById("search-pop-over").style.visibility = "visible"
-
-  }else{
+  if (
+    (document.getElementById("search-pop-over").style.visibility = "hidden")
+  ) {
+    document.getElementById("search-pop-over").style.visibility = "visible";
+  } else {
     document.getElementById("search-pop-over").style.visibility = "hidden";
   }
-
-
-}
+};
 
 const hideSearch = () => {
   document.getElementById("search-pop-over").style.visibility = "hidden";
-
-}
-
+};
 
 const showRepoSvg = () => {
   document.getElementById("first-svg").style.display = "none";
   document.getElementById("second-svg").style.display = "block";
   document.getElementById("jump-to").style.display = "block";
-
-}
+};
 const hideRepoSvg = () => {
   document.getElementById("first-svg").style.display = "block";
   document.getElementById("second-svg").style.display = "none";
   document.getElementById("jump-to").style.display = "none";
-
-}
+};
 
 const notificationDesc = () => {
   document.getElementById("notify").style.display = "block";

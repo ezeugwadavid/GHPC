@@ -66,6 +66,7 @@ const getRepos = () => {
         if (data.data.user === null) {
           document.getElementById("error-container").style.display = "block";
           document.getElementById("mesg").innerHTML = "user not found";
+          document.getElementById("loader").style.display = "none";
           setTimeout(function () {
             document.getElementById("error-container").style.display = "none";
           }, 4000);

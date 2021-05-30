@@ -1,163 +1,146 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-div{
-    font-family: Segoe UI;
+div {
+  font-family: Segoe UI;
 }
 
-.main{
+.main {
+  max-width: 800px;
+  margin: 3% auto;
+}
+
+.github-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.fa-github {
+  font-size: 60px;
+}
+
+.sign-in-text {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 36px;
+  color: #24292e;
+  font-weight: 300;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+.error-container {
+  display: none;
+  border: 1px solid #ffe3e6;
+  background-color: #ffe3e6;
+  border-radius: 5px;
+  padding: 2%;
+  width: 40%;
+  margin: 2% auto;
+}
+
+.error-mesg {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 21px;
+  color: #24292e;
+}
+
+span {
+  margin-left: 20px;
+  color: #db999c;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.input-container {
+  width: 40%;
+  background-color: #f6f8fa;
+  padding: 3%;
+  margin: 1% auto;
+  border-radius: 5px;
+}
+
+.input-label-wrapper {
+  margin: 1% auto;
+}
+
+.label {
+  font-size: 14px;
+  line-height: 21px;
+  color: #24292e;
+  margin-bottom: 2%;
+}
+
+button {
+  width: 100%;
+  padding: 2%;
+  border-radius: 5px;
+  border: 1px solid #2ea44f;
+  background-color: #2ea44f;
+  color: #ffffff;
+  font-family: Segoe UI;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+  margin: 3% auto;
+}
+
+.input input {
+  font-family: Segoe UI;
+  font-weight: 400;
+  color: #24292e;
+  font-size: 14px;
+  padding: 6px;
+  width: 100%;
+  border: 1px solid #eaecef;
+  border-radius: 7px;
+  /* -webkit-transition: all 0.30s ease-in-out; */
+}
+
+.input input:focus {
+  border-radius: 7px;
+  outline: none;
+  border: 2px solid #4284ca;
+  box-shadow: 0px 0px 5px #4284ca;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+}
+
+.loader img {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
     max-width: 800px;
-    margin: 3% auto;
-}
-
-.github-icon{
-    display: flex;
-    justify-content: center;
-
-}
-
-.fa-github{
-    font-size: 60px;
-}
-
-.sign-in-text{
-    display: flex;
-    justify-content: center;
-    font-size: 24px;
-    line-height: 36px;
-    color: #24292E;
-    font-weight: 300;
-    margin-top: 2%;
-    margin-bottom: 1%;
-}
-
-.error-container{
-    display: none;
-    border: 1px solid #FFE3E6;
-    background-color: #FFE3E6;
-    border-radius: 5px;
-    padding: 2%;
-    width: 40%;
-    margin: 2% auto;
-    
-}
-
-.error-mesg{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    line-height: 21px;
-    color: #24292E;
-}
-
- span{
-    margin-left: 20px;
-    color: #DB999C;
-    font-weight: 500;
-    font-size: 16px;
-  
-}
-
-.input-container{
-    width: 40%;
-    background-color: #F6F8FA;
+    margin: 30% auto;
+  }
+  .input-container {
+    width: 90%;
+    background-color: #f6f8fa;
     padding: 3%;
     margin: 1% auto;
     border-radius: 5px;
-}
+  }
 
-.input-label-wrapper{
-   margin: 1% auto;
-    
-}
-
-
-.label{
-    font-size: 14px;
-    line-height: 21px;
-    color: #24292E;
-    margin-bottom: 2%;
-}
-
-button{
-    width: 100%;
-    padding: 2%;
+  .error-container {
+    border: 1px solid #ffe3e6;
+    background-color: #ffe3e6;
     border-radius: 5px;
-    border: 1px solid #2EA44F;
-    background-color: #2EA44F;
-    color: #FFFFFF;
-    font-family: Segoe UI;
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 500;
-    margin: 3% auto;
-}
-
-
-
-
-.input input{
-    font-family: Segoe UI;
-    font-weight: 400;
-    color: #24292E;
-    font-size: 14px;
-    padding: 6px;
-    width: 100%;
-    border: 1px solid #EAECEF;
-    border-radius: 7px;
-    /* -webkit-transition: all 0.30s ease-in-out; */
-   
-}
-
-.input input:focus{
-    border-radius: 7px;
-    outline: none;
-    border: 2px solid #4284ca;
-    box-shadow: 0px 0px 5px #4284ca;
-    
-
-}
-
-.loader{
-   display: flex;
-   justify-content: center;
-}
-
-.loader img{
-    position: relative;
-    width: 150px;
-    height: 150px;
-    display: none;
-}
-
-
-
-@media screen and (max-width: 1024px){
-    .main{
-        max-width: 800px;
-        margin: 30% auto;
-    }
-    .input-container{
-        width: 90%;
-        background-color: #F6F8FA;
-        padding: 3%;
-        margin: 1% auto;
-        border-radius: 5px;
-    }
-
-    .error-container{
-        border: 1px solid #FFE3E6;
-        background-color: #FFE3E6;
-        border-radius: 5px;
-        padding: 2%;
-        width: 90%;
-        margin: 2% auto;
-        
-        
-    }
-
-
+    padding: 2%;
+    width: 90%;
+    margin: 2% auto;
+  }
 }
