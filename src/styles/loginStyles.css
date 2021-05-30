@@ -121,6 +121,19 @@ button{
 
 }
 
+.loader{
+   display: flex;
+   justify-content: center;
+}
+
+.loader img{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: none;
+}
+
+
 
 @media screen and (max-width: 1024px){
     .main{
@@ -145,5 +158,6 @@ button{
         
         
     }
+
 
 }

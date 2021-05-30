@@ -1,18 +1,20 @@
-const username = localStorage.getItem('username');
-console.log(username);
 
+const username = localStorage.getItem("username");
+const logout = () => {
+  localStorage.removeItem("username");
+  window.location.assign("loginPage.html");
+};
+if (!username) {
+  window.location.assign("loginPage.html");
+}
 
+let reposArray = [];
 
-
-
-
-
-
-
-
-
+// fetch repo details
 const getRepoDetails = () => {
-  const token =  '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';
+  document.getElementById("body").style.display = "none";
+  document.getElementById("loader").style.display = "block";
+  const token = "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";
 
   const query = `query { 
     user(login: "${username}") {
@@ -43,107 +45,141 @@ const getRepoDetails = () => {
 
 }`;
 
-
-
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${
-          token
-        }`
+      Authorization: `Bearer ${token}`,
     },
 
-    
-    body: JSON.stringify({ query })
+    body: JSON.stringify({ query }),
   };
 
   fetch(`https://api.github.com/graphql`, options)
-  .then(response => {
-      
-      response.json().then( data => {
-        localStorage.setItem('data', data);
+    .then((response) => {
+      response.json().then((data) => {
         console.log(data);
 
-        const user = data.data.user
-        const avatar = user.avatarUrl
 
-         document.getElementById("avatar").style.backgroundImage = `url(${avatar})`;
-         document.getElementById("mobile-avatar").style.backgroundImage = `url(${avatar})`;
-         document.getElementById("img-lg").src = `${avatar}`;
-         document.getElementById("profile-name").innerHTML = user.name;
-         document.getElementById("profile-username").innerHTML = user.login;
+        const user = data.data.user;
+        const avatar = user.avatarUrl;
 
-         const bio = () => {
-           if(user.bio !== null){
+        document.getElementById(
+          "avatar"
+        ).style.backgroundImage = `url(${avatar})`;
+        document.getElementById(
+          "mobile-avatar"
+        ).style.backgroundImage = `url(${avatar})`;
+        document.getElementById("img-lg").src = `${avatar}`;
+        document.getElementById("profile-name").innerHTML = user.name;
+        document.getElementById("profile-username").innerHTML = user.login;
+        document.getElementById("mobile-links").innerHTML = user.login;
+        document.getElementById("user-desc").innerHTML = user.login;
+
+        const bio = () => {
+          if (user.bio !== null) {
             document.getElementById("bio").innerHTML = user.bio;
             document.getElementById("bio-mobile").innerHTML = user.bio;
+          } else {
+            document.getElementById("bio").innerHTML = "";
+          }
+        };
+        bio();
+        const repoCount = data.data.user.repositories.nodes.length;
+        document.getElementById(
+          "desc"
+        ).innerHTML = `${repoCount} results for public repositories`;
 
-           } else {
-            document.getElementById("bio").innerHTML = '';
-
-           }
-         };
-         bio();
-         const repoCount =  data.data.user.repositories.nodes.length;
-         document.getElementById("desc").innerHTML = `${repoCount} results for public repositories`
-         console.log(repoCount);
-         
-        
-        processQuery(data);
-      })
-    
-  }).catch(err => console.log(err));  
-}
-
-
-
- const processQuery = (datas) => {
-   const repoDetails = datas.data.user.repositories.nodes;
-  
-  
-  let output = "";
-   repoDetails.forEach((object) => {
-     const repoName = object.name;
-     const description = () => {
-       if (object.description != null){
-         return object.description;
-       } else {
-         return '';
-       }
-     }
-
-     const forkCount = object.forkCount;
-     const stargazerCount = object.stargazerCount;
-     const updatedAt = new Date(object.updatedAt);
-     const date = updatedAt.toDateString();
-     const languages = object.languages.nodes
-
-
-     const language = () => {
-       if (languages.length !== 0){
-         return languages[0].name;
-       } else {
-         return 'HTML';
-       }
-     }
-    
-
-     const languageColor = () => {
-
-      if (languages.length !== 0){
        
+        
+    
+        processQuery(data);
+        document.getElementById("body").style.display = "block";
+        document.getElementById("loader").style.display = "none";
+        searchBarRepos(reposArray, user.login);
+       
+
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+
+
+const searchBarRepos = (array, user) => {
+  const n = 5 //get the first 5 items from array
+  
+  let searchHistory = "";
+
+  const newArray = array.slice(0, n);
+  console.log(newArray);
+
+
+
+  newArray.forEach((reponame) => {
+   searchHistory += `
+    <div class="search-links"  onmouseout="hideRepoSvg()" onmouseover="showRepoSvg()">
+
+     <div class="left">
+
+     <div class="repo-svg"  id="first-svg"> <img src="./images/repo.svg" alt="" /></div>
+     <div class="repo-svg" id="second-svg"> <img src="./images/repo_light.svg" alt="" /></div>
+     <div class="latest-searches">${user}/${reponame}</div>
+     </div>
+
+     <div class="jump-to" id="jump-to">jump to</div>
+   </div>
+
+   `;
+
+
+
+
+  });
+
+  document.getElementById("link-container").innerHTML = searchHistory; 
+  
+
+};
+
+
+const processQuery = (datas) => {
+  const repoDetails = datas.data.user.repositories.nodes;
+
+  let output = "";
+  repoDetails.forEach((object) => {
+    const repoName = object.name;
+    //pushes repository name to the reposArray for the searchbar to use
+    reposArray.push(repoName);
+    const description = () => {
+      if (object.description != null) {
+        return object.description;
+      } else {
+        return "";
+      }
+    };
+
+    const forkCount = object.forkCount;
+    const stargazerCount = object.stargazerCount;
+    const updatedAt = new Date(object.updatedAt);
+    const date = updatedAt.toDateString();
+    const languages = object.languages.nodes;
+
+    const language = () => {
+      if (languages.length !== 0) {
+        return languages[0].name;
+      } else {
+        return "HTML";
+      }
+    };
+
+    const languageColor = () => {
+      if (languages.length !== 0) {
         return languages[0].color;
       } else {
-        return '#563D7C';
+        return "#563D7C";
       }
-
-     }
-
-    
-
-   
-
+    };
 
     output += `
 
@@ -153,7 +189,7 @@ const getRepoDetails = () => {
 
 
       <div class="star-icon">
-        <img src="../images/star_outline_black_24dp.svg" alt="">
+        <img src="./images/star_outline_black_24dp.svg" alt="">
         <div class="star"> Star</div>
       </div>
     </div>
@@ -169,12 +205,12 @@ const getRepoDetails = () => {
       </div>
 
       <div class="stars">
-        <div class="unstar-icon"><img src="../images/star_outline_sm.svg" alt=""></div>
+        <div class="unstar-icon"><img src="./images/star_outline_sm.svg" alt=""></div>
         <div class="star-num">${stargazerCount}</div>
 
       </div>
       <div class="forks">
-        <div class="fork-icon"><img src="../images/repo-forked.svg" alt=""></div>
+        <div class="fork-icon"><img src="./images/repo-forked.svg" alt=""></div>
         <div class="star-num">${forkCount}</div>
 
       </div>
@@ -196,47 +232,44 @@ const getRepoDetails = () => {
 
 
     `;
-
-    
-
-  
-
-    
-   
   });
- 
 
   document.getElementById("dynamic-repositories-fetch").innerHTML = output;
-  
+};
 
+getRepoDetails();
 
+// for the user interface 
 
+const showSearch = () => {
+  if (document.getElementById("search-pop-over").style.visibility = "hidden"){
+    document.getElementById("search-pop-over").style.visibility = "visible"
+
+  }else{
+    document.getElementById("search-pop-over").style.visibility = "hidden";
+  }
 
 
 }
 
-getRepoDetails();
+const hideSearch = () => {
+  document.getElementById("search-pop-over").style.visibility = "hidden";
+
+}
 
 
+const showRepoSvg = () => {
+  document.getElementById("first-svg").style.display = "none";
+  document.getElementById("second-svg").style.display = "block";
+  document.getElementById("jump-to").style.display = "block";
 
+}
+const hideRepoSvg = () => {
+  document.getElementById("first-svg").style.display = "block";
+  document.getElementById("second-svg").style.display = "none";
+  document.getElementById("jump-to").style.display = "none";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 const notificationDesc = () => {
   document.getElementById("notify").style.display = "block";
@@ -255,7 +288,7 @@ const toggleActions = () => {
 };
 
 const showNavs = () => {
-  let x = window.matchMedia("(min-width: 769px)")
+  let x = window.matchMedia("(min-width: 769px)");
   let nav = document.getElementById("mobileNav");
   if (nav.style.display === "none") {
     nav.style.display = "block";
@@ -267,21 +300,18 @@ const showNavs = () => {
 const showSetStatus = () => {
   let details = document.getElementById("setStatus");
   let emoji = document.getElementById("smiley");
-    details.style.display = "block";
-    emoji.style.borderRadius = "30px"
-}
-
+  details.style.display = "block";
+  emoji.style.borderRadius = "30px";
+};
 
 const changeSetStatus = () => {
   let details = document.getElementById("setStatus");
   let emoji = document.getElementById("smiley");
   details.style.display = "none";
-  emoji.style.borderRadius = "50%"
-
-}
+  emoji.style.borderRadius = "50%";
+};
 
 const showBorder1 = () => {
- 
   let tab1 = document.getElementById("tab1");
   let tab2 = document.getElementById("tab2");
   let tab3 = document.getElementById("tab3");
@@ -292,23 +322,18 @@ const showBorder1 = () => {
   let tabthree = document.getElementById("tabThree");
   let tabfour = document.getElementById("tabFour");
 
+  tab1.style.visibility = "visible";
+  tab2.style.visibility = "hidden";
+  tab3.style.visibility = "hidden";
+  tab4.style.visibility = "hidden";
 
-    tab1.style.visibility = "visible"; 
-    tab2.style.visibility = "hidden"; 
-    tab3.style.visibility = "hidden"; 
-    tab4.style.visibility = "hidden"; 
+  tabone.style.fontWeight = "600";
+  tabtwo.style.fontWeight = "400";
+  tabthree.style.fontWeight = "400";
+  tabfour.style.fontWeight = "400";
 
-    tabone.style.fontWeight = "600"; 
-    tabtwo.style.fontWeight = "400"; 
-    tabthree.style.fontWeight = "400"; 
-    tabfour.style.fontWeight = "400"; 
-
-    showEmptyPage1();
-    
-
-
-}
-
+  showEmptyPage1();
+};
 
 const showEmptyPage1 = () => {
   let firsttab = document.getElementById("first-tab");
@@ -320,9 +345,7 @@ const showEmptyPage1 = () => {
   secondtab.style.display = "none";
   thirdtab.style.display = "none";
   fourthtab.style.display = "none";
- 
-}
-
+};
 
 const showBorder2 = () => {
   let tab1 = document.getElementById("tab1");
@@ -335,21 +358,17 @@ const showBorder2 = () => {
   let tabthree = document.getElementById("tabThree");
   let tabfour = document.getElementById("tabFour");
 
+  tab1.style.visibility = "hidden";
+  tab2.style.visibility = "visible";
+  tab3.style.visibility = "hidden";
+  tab4.style.visibility = "hidden";
 
-
-    tab1.style.visibility = "hidden"; 
-    tab2.style.visibility = "visible"; 
-    tab3.style.visibility = "hidden"; 
-    tab4.style.visibility = "hidden"; 
-
-    tabone.style.fontWeight = "400"; 
-    tabtwo.style.fontWeight = "600"; 
-    tabthree.style.fontWeight = "400"; 
-    tabfour.style.fontWeight = "400"; 
-    showEmptyPage2();
-
-
-}
+  tabone.style.fontWeight = "400";
+  tabtwo.style.fontWeight = "600";
+  tabthree.style.fontWeight = "400";
+  tabfour.style.fontWeight = "400";
+  showEmptyPage2();
+};
 
 const showEmptyPage2 = () => {
   let firsttab = document.getElementById("first-tab");
@@ -361,15 +380,9 @@ const showEmptyPage2 = () => {
   secondtab.style.display = "block";
   thirdtab.style.display = "none";
   fourthtab.style.display = "none";
- 
-}
-
-
+};
 
 const showBorder3 = () => {
-  
-  
-   
   let tab1 = document.getElementById("tab1");
   let tab2 = document.getElementById("tab2");
   let tab3 = document.getElementById("tab3");
@@ -380,22 +393,18 @@ const showBorder3 = () => {
   let tabthree = document.getElementById("tabThree");
   let tabfour = document.getElementById("tabFour");
 
- 
+  tab1.style.visibility = "hidden";
+  tab2.style.visibility = "hidden";
+  tab3.style.visibility = "visible";
+  tab4.style.visibility = "hidden";
 
+  tabone.style.fontWeight = "400";
+  tabtwo.style.fontWeight = "400";
+  tabthree.style.fontWeight = "600";
+  tabfour.style.fontWeight = "400";
 
-
-    tab1.style.visibility = "hidden"; 
-    tab2.style.visibility = "hidden"; 
-    tab3.style.visibility = "visible"; 
-    tab4.style.visibility = "hidden"; 
-
-    tabone.style.fontWeight = "400"; 
-    tabtwo.style.fontWeight = "400"; 
-    tabthree.style.fontWeight = "600"; 
-    tabfour.style.fontWeight = "400"; 
-
-    showEmptyPage3();
-}
+  showEmptyPage3();
+};
 
 const showEmptyPage3 = () => {
   let firsttab = document.getElementById("first-tab");
@@ -407,13 +416,9 @@ const showEmptyPage3 = () => {
   secondtab.style.display = "none";
   thirdtab.style.display = "block";
   fourthtab.style.display = "none";
- 
-}
+};
 
 const showBorder4 = () => {
-  
-  
-   
   let tab1 = document.getElementById("tab1");
   let tab2 = document.getElementById("tab2");
   let tab3 = document.getElementById("tab3");
@@ -424,20 +429,18 @@ const showBorder4 = () => {
   let tabthree = document.getElementById("tabThree");
   let tabfour = document.getElementById("tabFour");
 
-    tab1.style.visibility = "hidden"; 
-    tab2.style.visibility = "hidden"; 
-    tab3.style.visibility = "hidden"; 
-    tab4.style.visibility = "visible"; 
+  tab1.style.visibility = "hidden";
+  tab2.style.visibility = "hidden";
+  tab3.style.visibility = "hidden";
+  tab4.style.visibility = "visible";
 
-    tabone.style.fontWeight = "400"; 
-    tabtwo.style.fontWeight = "400"; 
-    tabthree.style.fontWeight = "400"; 
-    tabfour.style.fontWeight = "600"; 
+  tabone.style.fontWeight = "400";
+  tabtwo.style.fontWeight = "400";
+  tabthree.style.fontWeight = "400";
+  tabfour.style.fontWeight = "600";
 
-    showEmptyPage4();
-
-
-}
+  showEmptyPage4();
+};
 
 const showEmptyPage4 = () => {
   let firsttab = document.getElementById("first-tab");
@@ -449,32 +452,26 @@ const showEmptyPage4 = () => {
   secondtab.style.display = "none";
   thirdtab.style.display = "none";
   fourthtab.style.display = "block";
- 
-}
-
+};
 
 const showDesc = () => {
   document.getElementById("repo-desc").style.display = "block";
   document.getElementById("desc-arrow").style.display = "block";
-
-}
+};
 const hideDesc = () => {
   document.getElementById("repo-desc").style.display = "none";
   document.getElementById("desc-arrow").style.display = "none";
-
-}
+};
 
 const showLabel = () => {
   document.getElementById("avatar-arrow").style.display = "block";
   document.getElementById("change-avatar").style.display = "block";
-
-}
+};
 
 const hideLabel = () => {
   document.getElementById("avatar-arrow").style.display = "none";
   document.getElementById("change-avatar").style.display = "none";
-
-}
+};
 
 
 

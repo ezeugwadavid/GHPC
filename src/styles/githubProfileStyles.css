@@ -104,6 +104,95 @@ header{
     justify-content: flex-end;
 }
 
+.search-pop-over{
+    position: absolute;
+    right: 57%;
+    top: 10px;
+    width: 500px;
+    z-index: 3;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding: 5px 0px;
+    visibility: hidden;
+   
+}
+
+
+
+.input-field{
+    margin: 0px auto;
+    outline: none;
+    border-radius: 5px;
+    width: 100%;
+    outline: 0;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid #EAECEF; 
+    background-color: #FAFBFC;
+    padding: 5px;
+    font-family: Segoe UI;
+    font-size: 14px;
+    color: #586069;
+}
+
+.input-field:focus {
+    outline: none;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+  }
+
+  .search-links{
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #EAECEF; 
+      padding: 10px 0px;
+      font-family: Segoe UI;
+      font-size: 14px;
+      line-height: 21px;
+  }
+
+  .search-links:hover{
+      background-color: #0366D6;
+      color: #FFFFFF;
+
+      
+}
+
+  .left{
+      display: flex;
+  }
+
+  .repo-svg{
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 10px;
+      margin-left: 5px;
+  }
+
+  .jump-to{
+      background-color: #F6F8FA;
+      color: #6A737D;
+      border: 1px solid #F6F8FA;
+      width: 70px;
+      padding: 3px;
+      border-radius: 5px;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 10px;
+      display: none;
+  }
+
+  #second-svg{
+      display: none;
+  }
+
+ 
+
+ 
+
+
 .notification-message{
     position: absolute;
     right: 150px;
@@ -802,6 +891,24 @@ margin-bottom: auto;
 
 
 
+.loader{
+    display: flex;
+    justify-content: center;
+    margin: 10% auto;
+ }
+ 
+ .loader img{
+     position: relative;
+     width: 300px;
+     height: 300px;
+     display: none;
+ }
+ 
+
+
+
+
+
 
 
 
@@ -1032,6 +1139,11 @@ margin-bottom: auto;
 
     .pop-overs{
         display: none;
+    }
+
+    .search-pop-over{
+        display: none;
+       
     }
 
     .header-contents{
